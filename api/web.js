@@ -15,8 +15,8 @@ function getfastifyoptions()
 
 function registerfastifyroutes(fastify)
 {
-  fastify.register(require('./routes/ping'));
-  fastify.register(require('./routes/health'));
+  fastify.register(require('../routes/ping'));
+  fastify.register(require('../routes/health'));
 }
 
 async function start(fastify)
