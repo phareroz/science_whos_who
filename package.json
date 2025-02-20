@@ -1,0 +1,10 @@
+{
+  "name": "science_whos_who",
+  "version": "1.0.0",
+  "author": "phareroz",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "latest",
+    "@fastify/static": "latest"
+  }
+}
