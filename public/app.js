@@ -91,7 +91,7 @@ async function getuser()
     const user = await response.json();
     const row = $add('div', $('content'), {class:'row d-flex justify-content-center text-center'});
     const col1 = $add('div', row, {class:'col my-2'})
-    $add('img', col1, {src:user.surname+'.jpg'}, '');
+    $add('img', col1, {class:'img-fluid', alt:user.surname + 'picture', src:user.surname+'.jpg'}, '');
     const col2 = $add('div', row, {class:'col my-2'})
     const ul = $add('ul', col2, {style:'display:inline-block', class:'list-group'});
     $add('li', ul, {class:'list-group-item active'}, user.surname + ' ' + user.forename);
