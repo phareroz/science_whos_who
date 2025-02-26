@@ -54,14 +54,34 @@ function init()
     if (e.code === 'Enter' || e.code === 'NumpadEnter')
       $('get').click();
   });
+  getuser_enable();
+}
+
+function getuser_enable()
+{
+  $('content').innerHTML = '';
+  $('error').innerHTML = '';
+  $('get').removeAttribute('disabled');
+  $('getuser_spin').style.display = 'none';
+  $('getuser_load').style.display = 'none';
+  $('getuser_ready').style.display = 'inline';
+}
+
+function getuser_disable()
+{
+  $('content').innerHTML = '';
+  $('error').innerHTML = '';
+  $('get').setAttribute('disabled', true);
+  $('getuser_spin').style.display = 'inline';
+  $('getuser_load').style.display = 'inline';
+  $('getuser_ready').style.display = 'none';
 }
 
 async function getuser()
 {
   if ($('search').value == '')
     return;
-  $('content').innerHTML = '';
-  $('error').innerHTML = '';
+  getuser_disable();
   try
   {
     let response;
@@ -79,16 +99,19 @@ async function getuser()
     }
     else
     {
+      getuser_enable();
       $('error').innerHTML = 'error : bad input format, must be an id (4 letters 4 digits), a mail, a surname or a forename';
       return;
     }
     if (!response.ok)
     {
       const err = await response.json();
+      getuser_enable();
       $('error').innerHTML = 'error : ' + response.status + ' ' + err.message;
       return;
     }
     const user = await response.json();
+    getuser_enable();
     const row = $add('div', $('content'), {class:'row d-flex justify-content-center text-center'});
     const col1 = $add('div', row, {class:'col my-2'})
     $add('img', col1, {class:'img-fluid', alt:user.surname + 'picture', src:user.surname+'.jpg'}, '');
@@ -102,6 +125,7 @@ async function getuser()
   }
   catch (error)
   {
+    getuser_enable();
     $('error').innerHTML = 'error : ' + error.message;
   }
 }

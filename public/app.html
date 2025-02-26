@@ -31,7 +31,12 @@
           <div class="col-lg-6 col-md-8 col-sm-10 col-12 my-lg-4 my-md-3 my-sm-3 my-2">
             <div class="input-group">
               <input id="search" type="text" class="form-control" placeholder="user name, mail or id" aria-label="user name, mail or id">
-              <button id="get" class="btn btn-primary text-bg-primary p-3" type="button">Get user</button>
+              <button id="get" class="btn btn-primary text-bg-primary col-lg-2 col-md-3 col-sm-4 col-4 p-3" type="button">
+                <span id="getuser_spin" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span id="getuser_load" class="visually-hidden">Loading...</span>
+                <span id="getuser_ready">Get user</span>
+              
+              </button>
             </div>
           </div>
         </div>
